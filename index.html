@@ -1,177 +1,354 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Dương Hoàng Phúc</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dương Hoàng Phúc | Java Backend Intern</title>
+<meta name="description" content="Dương Hoàng Phúc, Software Engineering student at FPT University, looking for a Java Backend internship. Spring Boot, React, MySQL and PostgreSQL.">
+<meta name="theme-color" content="#0d1015">
+<meta property="og:title" content="Dương Hoàng Phúc | Java Backend Intern">
+<meta property="og:description" content="Software Engineering student building REST APIs with Java and Spring Boot. Open to a Java Backend internship.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1015'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' text-anchor='middle' fill='%23e8b07a'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-/* Layout: one narrow column, CV-style. Mono section labels sit in a left gutter, content on the right; stacks on phones. */
+/* Layout: sticky slim nav, hero split into headline and a live-looking API response about me,
+   then full-width sections with hairline dividers. Projects pair prose (left) with domain model + stack flow (right). */
 :root {
-  --bg: #0e1116;
-  --surface: #151a21;
-  --line: #252c36;
-  --fg: #e7e9ee;
+  --bg: #0d1015;
+  --panel: #13171e;
+  --line: #222933;
+  --fg: #e8eaef;
   --muted: #98a1b0;
   --accent: #e8b07a;
+  --ok: #6fcf97;
+  --code-key: #9db4d6;
+  --code-lit: #8fd0c4;
   --font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font: 400 16px/1.65 var(--font-body);
-  padding-block: 0;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-.page { max-width: 880px; margin: 0 auto; padding-block: 56px 48px; }
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.65 var(--font-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #1a1208; padding: 8px 12px; border-radius: 4px; z-index: 20; }
+.skip:focus { left: 8px; }
 
-header { padding-bottom: 48px; }
-.eyebrow { font: 500 13px/1.4 var(--font-mono); color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 20px; }
-h1 { font: 700 clamp(2.4rem, 7vw, 4rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 24px; text-wrap: balance; }
-.intro { max-width: 60ch; color: var(--muted); font-size: 1.0625rem; margin: 0 0 28px; }
-.quick { display: flex; flex-wrap: wrap; gap: 8px 24px; font: 400 14px/1.5 var(--font-mono); }
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(13, 16, 21, 0.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav-in { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; }
+.brand { font: 600 15px/1 var(--font-mono); color: var(--fg); text-decoration: none; letter-spacing: 0.04em; }
+.brand span { color: var(--accent); }
+.nav ul { display: flex; flex-wrap: wrap; gap: 0 20px; list-style: none; margin: 0; padding: 0; font: 400 13px/1 var(--font-mono); }
+.nav li a { display: block; color: var(--muted); text-decoration: none; padding: 12px 0; }
+.nav li a:hover { color: var(--fg); }
 
-section { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px 40px; border-top: 1px solid var(--line); padding-block: 36px; }
-h2 { font: 500 12px/1.6 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 4px 0 0; }
-.body { min-width: 0; }
+/* Hero */
+.hero { padding-block: 72px 80px; background: radial-gradient(560px 300px at 88% 8%, rgba(232, 176, 122, 0.09), transparent 70%); }
+.hero-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.status { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; margin: 0 0 28px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex: none; }
+h1 { font: 700 clamp(2.5rem, 7.5vw, 4.5rem)/1.02 var(--font-display); letter-spacing: -0.025em; margin: 0 0 14px; text-wrap: balance; }
+.role { font: 500 clamp(1rem, 2.4vw, 1.2rem)/1.4 var(--font-mono); color: var(--accent); margin: 0 0 24px; }
+.intro { max-width: 50ch; color: var(--muted); font-size: 1.0625rem; margin: 0 0 32px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 14px/1 var(--font-body); text-decoration: none; padding: 12px 18px; border-radius: 6px; border: 1px solid var(--line); color: var(--fg); background: transparent; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #1a1208; }
+.btn.primary:hover { background: #f0c08f; border-color: #f0c08f; color: #1a1208; }
+.btn .arr { transition: transform 0.15s; }
+.btn:hover .arr { transform: translateX(3px); }
 
-.skills { display: grid; gap: 14px; margin: 0; }
-.skills > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 16px; }
-.skills dt { font: 500 13px/1.7 var(--font-mono); color: var(--muted); }
-.skills dd { margin: 0; }
-.skills .lead dd { color: var(--fg); font-weight: 500; }
+/* API panel */
+.api { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; min-width: 0; overflow: hidden; }
+.api-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+.verb { color: var(--accent); font-weight: 600; }
+.ok { color: var(--ok); }
+.code { margin: 0; padding: 16px; font: 400 13px/1.75 var(--font-mono); overflow-x: auto; color: var(--fg); tab-size: 2; }
+.k { color: var(--code-key); }
+.s { color: var(--accent); }
+.l { color: var(--code-lit); }
+.p { color: var(--muted); }
+.cursor { display: inline-block; width: 8px; height: 1.05em; background: var(--accent); vertical-align: text-bottom; margin-left: 2px; }
 
-.projects { display: grid; gap: 44px; }
-.project h3 { font: 600 1.375rem/1.25 var(--font-display); margin: 0 0 6px; letter-spacing: -0.01em; }
-.meta { font: 400 13px/1.5 var(--font-mono); color: var(--muted); margin: 0 0 14px; }
-.project ul { margin: 0 0 16px; padding-left: 1.1em; display: grid; gap: 6px; }
-.project li::marker { color: var(--muted); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
-.tags li { font: 400 12px/1.4 var(--font-mono); border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 3px 9px; color: var(--fg); }
-.links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 500; }
+/* Sections */
+.block { padding-block: 72px; border-top: 1px solid var(--line); }
+.eyebrow { font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+h2 { font: 700 clamp(1.75rem, 4vw, 2.5rem)/1.15 var(--font-display); letter-spacing: -0.015em; margin: 0 0 40px; text-wrap: balance; }
+.label { font: 500 12px/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.chips li { font: 400 12.5px/1.4 var(--font-mono); border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 4px 10px; }
+.chips.hl li { border-color: rgba(232, 176, 122, 0.45); color: var(--fg); }
 
-.edu h3 { font: 600 1.125rem/1.3 var(--font-display); margin: 0 0 4px; }
-.edu p { margin: 0; color: var(--muted); }
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 48px; }
+.skills .wide { grid-column: 1 / -1; }
+.skills .chips.hl li { font-size: 13.5px; padding: 6px 12px; }
 
-.contact { display: grid; gap: 12px; margin: 0; }
-.contact > div { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 4px 16px; align-items: baseline; }
-.contact dt { font: 500 13px/1.7 var(--font-mono); color: var(--muted); }
-.contact dd { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; min-width: 0; overflow-wrap: anywhere; }
-.copy { font: 500 12px/1 var(--font-mono); color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+/* Projects */
+.project { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px 56px; padding-block: 44px; border-top: 1px solid var(--line); }
+.project:first-child { border-top: 0; padding-top: 0; }
+.project:last-child { padding-bottom: 0; }
+.title { font: 700 1.75rem/1.2 var(--font-display); letter-spacing: -0.01em; margin: 0 0 8px; }
+.meta { font: 400 13px/1.5 var(--font-mono); color: var(--muted); margin: 0 0 18px; }
+.lede { max-width: 56ch; margin: 0 0 16px; }
+.points { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; max-width: 58ch; color: var(--muted); }
+.points li::marker { color: var(--accent); }
+.side { min-width: 0; display: grid; gap: 28px; align-content: start; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 400 12.5px/1.3 var(--font-mono); }
+.flow .node { border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 7px 11px; }
+.flow .arr { color: var(--accent); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Education */
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 56px; }
+.facts { margin: 0; display: grid; gap: 14px; }
+.facts > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 4px 16px; }
+.facts dt { font: 500 13px/1.7 var(--font-mono); color: var(--muted); }
+.facts dd { margin: 0; }
+.goal { color: var(--muted); max-width: 52ch; margin: 0; }
+
+/* Contact */
+.contact h2 { margin-bottom: 20px; }
+.contact .sub { color: var(--muted); max-width: 52ch; margin: 0 0 32px; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 0 0 24px; }
+.mail strong { font: 600 clamp(1.1rem, 3.6vw, 1.85rem)/1.3 var(--font-display); letter-spacing: -0.01em; overflow-wrap: anywhere; min-width: 0; }
+.copy { font: 500 12px/1 var(--font-mono); color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; cursor: pointer; }
 .copy:hover { border-color: var(--accent); color: var(--accent); }
 
-footer { border-top: 1px solid var(--line); padding-top: 24px; font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 
+@media (max-width: 820px) {
+  .hero { padding-block: 48px 56px; }
+  .hero-in, .project, .two { grid-template-columns: minmax(0, 1fr); }
+  .hero-in { gap: 40px; }
+  .project { gap: 28px; }
+}
 @media (max-width: 640px) {
-  .page { padding-block: 40px 32px; }
-  section { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 28px; }
-  h2 { margin: 0; }
-  .skills > div, .contact > div { grid-template-columns: minmax(0, 1fr); }
+  .block { padding-block: 56px; }
+  .skills { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .facts > div { grid-template-columns: minmax(0, 1fr); }
+  .nav ul { gap: 0 14px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  a, .copy { transition: color 0.15s, border-color 0.15s; }
+  .dot { animation: pulse 2.4s ease-out infinite; }
+  .cursor { animation: blink 1.1s steps(1) infinite; }
+  a, .copy, .btn { transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
 }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(111, 207, 151, 0.55); } 70%, 100% { box-shadow: 0 0 0 8px rgba(111, 207, 151, 0); } }
+@keyframes blink { 50% { opacity: 0; } }
 </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="page">
-  <header>
-    <p class="eyebrow">Java Backend Intern</p>
-    <h1>Dương Hoàng Phúc</h1>
-    <p class="intro">Software Engineering student at FPT University. I build web applications with Java and Spring Boot on the backend and React on the frontend, and I am looking for a Java Backend internship where I can work on reliable systems in a real team.</p>
-    <div class="quick">
-      <a href="https://github.com/HoangPhuc-IT" target="_blank" rel="noopener">github.com/HoangPhuc-IT</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </header>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Back to top">DHP<span>.</span></a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="body">
-      <dl class="skills">
-        <div class="lead"><dt>Backend</dt><dd>Java Core, OOP, Spring Boot, Spring MVC, JPA/Hibernate, RESTful API, JWT</dd></div>
-        <div><dt>Databases</dt><dd>MySQL, PostgreSQL, SQL Server, MongoDB</dd></div>
-        <div><dt>Frontend</dt><dd>ReactJS, HTML, CSS, Bootstrap, Tailwind CSS</dd></div>
-        <div><dt>Languages</dt><dd>Java, JavaScript, SQL, C/C++, Python</dd></div>
-        <div><dt>Tools</dt><dd>Git, GitHub, Docker, Postman, IntelliJ IDEA, VS Code, NetBeans</dd></div>
-      </dl>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-in">
+      <div>
+        <p class="status"><span class="dot" aria-hidden="true"></span>Open to internship</p>
+        <h1>Dương Hoàng Phúc</h1>
+        <p class="role">Java Backend Intern</p>
+        <p class="intro">Software Engineering student at FPT University. I build REST APIs and data layers with Java and Spring Boot, and I connect them to React frontends. I am looking for an internship where I can work on reliable systems in a real team.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View projects <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn" href="https://github.com/HoangPhuc-IT" target="_blank" rel="noopener">GitHub <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="api" role="img" aria-label="A JSON response describing Dương Hoàng Phúc: Java Backend Intern at FPT University, open to work.">
+        <div class="api-head" aria-hidden="true">
+          <span><span class="verb">GET</span> /api/developers/phuc</span>
+          <span class="ok">200 OK</span>
+        </div>
+<pre class="code" aria-hidden="true"><span class="p">{</span>
+  <span class="k">"name"</span><span class="p">:</span> <span class="s">"Dương Hoàng Phúc"</span><span class="p">,</span>
+  <span class="k">"role"</span><span class="p">:</span> <span class="s">"Java Backend Intern"</span><span class="p">,</span>
+  <span class="k">"university"</span><span class="p">:</span> <span class="s">"FPT University"</span><span class="p">,</span>
+  <span class="k">"backend"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Java"</span><span class="p">,</span> <span class="s">"Spring Boot"</span><span class="p">,</span> <span class="s">"JPA"</span><span class="p">],</span>
+  <span class="k">"database"</span><span class="p">:</span> <span class="p">[</span><span class="s">"MySQL"</span><span class="p">,</span> <span class="s">"PostgreSQL"</span><span class="p">],</span>
+  <span class="k">"frontend"</span><span class="p">:</span> <span class="p">[</span><span class="s">"React"</span><span class="p">],</span>
+  <span class="k">"teamProjects"</span><span class="p">:</span> <span class="l">2</span><span class="p">,</span>
+  <span class="k">"openToWork"</span><span class="p">:</span> <span class="l">true</span>
+<span class="p">}</span><span class="cursor"></span></pre>
+      </div>
     </div>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="body projects">
+  <section class="block" id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2>What I build with</h2>
+      <div class="skills">
+        <div class="wide">
+          <p class="label">Backend</p>
+          <ul class="chips hl">
+            <li>Java Core</li><li>OOP</li><li>Spring Boot</li><li>Spring MVC</li><li>JPA / Hibernate</li><li>RESTful API</li><li>JWT</li>
+          </ul>
+        </div>
+        <div>
+          <p class="label">Databases</p>
+          <ul class="chips"><li>MySQL</li><li>PostgreSQL</li><li>SQL Server</li><li>MongoDB</li></ul>
+        </div>
+        <div>
+          <p class="label">Frontend</p>
+          <ul class="chips"><li>ReactJS</li><li>HTML</li><li>CSS</li><li>Bootstrap</li><li>Tailwind CSS</li></ul>
+        </div>
+        <div>
+          <p class="label">Languages</p>
+          <ul class="chips"><li>Java</li><li>JavaScript</li><li>SQL</li><li>C/C++</li><li>Python</li></ul>
+        </div>
+        <div>
+          <p class="label">Tools</p>
+          <ul class="chips"><li>Git</li><li>GitHub</li><li>Docker</li><li>Postman</li><li>IntelliJ IDEA</li><li>VS Code</li><li>NetBeans</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <p class="eyebrow">Projects</p>
+      <h2>Two full-stack systems, built in a team</h2>
+
       <article class="project">
-        <h3>Cross-Border Racehorse Transport System</h3>
-        <p class="meta">Full-stack · Team of 4–5 · 2025–2026</p>
-        <ul>
-          <li>Web system for managing cross-border racehorse transportation, from customer records to transport requests.</li>
-          <li>Designed the database for customers, horses, transport requests and supporting documents.</li>
-          <li>Built the RESTful APIs in Spring Boot and the React frontend that uses them.</li>
-        </ul>
-        <ul class="tags" aria-label="Technologies">
-          <li>Java</li><li>Spring Boot</li><li>React</li><li>MySQL</li><li>PostgreSQL</li><li>Git</li>
-        </ul>
-        <div class="links"><a href="https://github.com/hankfwr23r2/SWP_RHT" target="_blank" rel="noopener">Source on GitHub</a></div>
+        <div>
+          <h3 class="title">Cross-Border Racehorse Transport System</h3>
+          <p class="meta">Full-stack · Team of 4–5 · 2025–2026</p>
+          <p class="lede">A web system for managing cross-border racehorse transportation, from customer records to transport requests and their paperwork.</p>
+          <ul class="points">
+            <li>Designed the database for customers, horses, transport requests and documents.</li>
+            <li>Built the RESTful APIs in Spring Boot for each of these resources.</li>
+            <li>Built the React frontend that consumes the APIs.</li>
+            <li>Worked in a team of 4–5 using Git and GitHub.</li>
+          </ul>
+        </div>
+        <aside class="side">
+          <div>
+            <p class="label">Stack</p>
+            <div class="flow" aria-label="React, then Spring Boot REST API, then MySQL and PostgreSQL">
+              <span class="node">React</span><span class="arr" aria-hidden="true">→</span>
+              <span class="node">Spring Boot REST</span><span class="arr" aria-hidden="true">→</span>
+              <span class="node">MySQL · PostgreSQL</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Domain model</p>
+            <ul class="chips"><li>Customer</li><li>Horse</li><li>TransportRequest</li><li>Document</li></ul>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/hankfwr23r2/SWP_RHT" target="_blank" rel="noopener">Source code <span class="arr" aria-hidden="true">↗</span></a>
+            <!-- Live demo: add another <a class="btn primary" href="..."> here once the site is deployed. -->
+          </div>
+        </aside>
       </article>
 
       <article class="project">
-        <h3>Thegioihoatuoi, Online Flower Shop</h3>
-        <p class="meta">Full-stack · Team of 4–5 · 2025–2026</p>
-        <ul>
-          <li>E-commerce site for selling fresh flowers and managing online orders.</li>
-          <li>Designed the schema and ERD for products, categories, customers, accounts and orders.</li>
-          <li>Implemented authentication, product browsing, search and filtering, shopping cart and checkout.</li>
-          <li>Built backend services and APIs in Spring Boot, plus admin screens for products, orders and promotions.</li>
-        </ul>
-        <ul class="tags" aria-label="Technologies">
-          <li>Java</li><li>Spring Boot</li><li>React</li><li>MySQL</li><li>Git</li>
-        </ul>
-        <div class="links"><a href="https://github.com/khietnn/Thegioihoatuoi" target="_blank" rel="noopener">Source on GitHub</a></div>
+        <div>
+          <h3 class="title">Thegioihoatuoi, Online Flower Shop</h3>
+          <p class="meta">Full-stack · Team of 4–5 · 2025–2026</p>
+          <p class="lede">An e-commerce site for selling fresh flowers and managing online orders, with an admin side for the shop.</p>
+          <ul class="points">
+            <li>Designed the schema and ERD for products, categories, customers, accounts and orders.</li>
+            <li>Implemented authentication, product browsing, search and filtering, shopping cart and checkout.</li>
+            <li>Built backend services and APIs in Spring Boot, and contributed to the React frontend.</li>
+            <li>Built admin screens for products, customers, orders, categories and promotions.</li>
+            <li>Tested and debugged features to improve stability.</li>
+          </ul>
+        </div>
+        <aside class="side">
+          <div>
+            <p class="label">Stack</p>
+            <div class="flow" aria-label="React, then Spring Boot REST API, then MySQL">
+              <span class="node">React</span><span class="arr" aria-hidden="true">→</span>
+              <span class="node">Spring Boot REST</span><span class="arr" aria-hidden="true">→</span>
+              <span class="node">MySQL</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Domain model</p>
+            <ul class="chips"><li>Product</li><li>Category</li><li>Customer</li><li>Account</li><li>Order</li><li>Promotion</li></ul>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/khietnn/Thegioihoatuoi" target="_blank" rel="noopener">Source code <span class="arr" aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
       </article>
     </div>
   </section>
 
-  <section id="education" class="edu">
-    <h2>Education</h2>
-    <div class="body">
-      <h3>FPT University</h3>
-      <p>Software Engineering · 2023 to 2027</p>
-      <p>GPA 7.8/10 · 50% scholarship</p>
+  <section class="block" id="education">
+    <div class="wrap">
+      <p class="eyebrow">Education</p>
+      <h2>Where I study, and where I am headed</h2>
+      <div class="two">
+        <dl class="facts">
+          <div><dt>University</dt><dd>FPT University</dd></div>
+          <div><dt>Major</dt><dd>Software Engineering</dd></div>
+          <div><dt>Years</dt><dd>2023 to 2027</dd></div>
+          <div><dt>GPA</dt><dd>7.8 / 10</dd></div>
+          <div><dt>Scholarship</dt><dd>50%</dd></div>
+        </dl>
+        <p class="goal">I want to apply what I have learned to real products, learn from an engineering team, and help build applications that are reliable and easy to use. My long-term goal is to become a well-rounded full-stack developer who can handle both backend and frontend, with backend as my strongest side.</p>
+      </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="body">
-      <dl class="contact">
-        <div>
-          <dt>Email</dt>
-          <dd><span id="email">duonghoangphuc2602@gmail.com</span><button class="copy" id="copy" type="button">Copy</button></dd>
-        </div>
-        <div>
-          <dt>GitHub</dt>
-          <dd><a href="https://github.com/HoangPhuc-IT" target="_blank" rel="noopener">github.com/HoangPhuc-IT</a></dd>
-        </div>
-      </dl>
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Open to a Java Backend internship</h2>
+      <p class="sub">If you have a team that could use another pair of hands on Spring Boot services, I would be glad to hear from you.</p>
+      <div class="mail">
+        <strong id="email">duonghoangphuc2602@gmail.com</strong>
+        <button class="copy" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://github.com/HoangPhuc-IT" target="_blank" rel="noopener">github.com/HoangPhuc-IT <span class="arr" aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </section>
+</main>
 
-  <footer>Dương Hoàng Phúc · 2026</footer>
-</div>
+<footer>
+  <div class="wrap">
+    <span>Dương Hoàng Phúc</span>
+    <span>Java · Spring Boot · React</span>
+  </div>
+</footer>
 
 <script>
 (function () {
   var btn = document.getElementById('copy');
   var el = document.getElementById('email');
+  if (!btn || !el) return;
   btn.addEventListener('click', function () {
     var done = function (msg) {
       btn.textContent = msg;
-      setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+      setTimeout(function () { btn.textContent = 'Copy email'; }, 1800);
     };
     var select = function () {
       var r = document.createRange();
@@ -187,5 +364,5 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; font: 400 12px/1.
   });
 })();
 </script>
-
-</body></html>
+</body>
+</html>
